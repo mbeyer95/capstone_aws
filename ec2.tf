@@ -8,6 +8,11 @@ data "aws_ami" "latest_linux_ami" {
         name                = "name"
         values              = ["amzn2-ami-hvm-*-x86_64-gp2"]
         }
+    filter {
+        name                = "virtualization type"
+        values              = ["hvm"]
+        }
+}
 }
 
 # Create EC2
