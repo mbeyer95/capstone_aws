@@ -13,7 +13,6 @@ data "aws_ami" "latest_linux_ami" {
         values              = ["hvm"]
         }
 }
-}
 
 # Create EC2
 resource "aws_instance" "bastion-host"{
@@ -27,8 +26,8 @@ resource "aws_instance" "bastion-host"{
         }
     user_data = file("userdata.sh")
 
-# create metadata
+# Create Metadata
     provisioner "local-exec"{
-        command = "echo Instance Type=${self.instance_type},Instance ID=${self.id},Public DNS=${self.public_dns},AMI ID=${self.ami} >> allinstancedetails"
+        command = "echo -e 'Instance Type = ${self.instance_type}\nInstance ID = ${self.id}\nPublic DNS = ${self.public_dns}\nAMI ID = ${self.ami}\n' >> allinstancedetails"
     }
 }
