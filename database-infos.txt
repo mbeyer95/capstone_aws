@@ -1,4 +1,0 @@
-DB Name: WordpressDB
-DB User: YTfmtEYO7AAGt1wG
-DB Pass: 4%gQdVQ<kewmin4f
-DB Host: terraform-20230804141045846800000003.cgcx53h2vrhj.us-west-2.rds.amazonaws.com
