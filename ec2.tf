@@ -9,7 +9,7 @@ data "aws_ami" "latest_linux_ami" {
         values              = ["amzn2-ami-hvm-*-x86_64-gp2"]
         }
     filter {
-        name                = "virtualization type"
+        name                = "virtualization-type"
         values              = ["hvm"]
         }
 }
