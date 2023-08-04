@@ -1,0 +1,12 @@
+VPC = vpc-08b787c4911d558ba
+PrivateSubnet2 = subnet-0d04ac85299e13f04
+InternetGateway = igw-05fd717e8883f7067
+PrivateSubnet1 = subnet-0f8139173abc78bdd
+PublicSubnet2 = subnet-070a957e93234d184
+PublicSubnet1 = subnet-05e8583d60dbe8673
+VPC = vpc-09b3e2ca5c7e88852
+PrivateSubnet2 = subnet-0fca7ba7e765a62d0
+PrivateSubnet1 = subnet-040ac166fbbe5922d
+InternetGateway = igw-07ddfa5a587c3617b
+PublicSubnet1 = subnet-06fc01c7a5ee74c82
+PublicSubnet2 = subnet-016afa448269874d9

@@ -15,19 +15,23 @@ locals {
 }
 
 # generating username and password for database
+resource "random_string" "username" {
+    length          = 16
+    upper           = true
+    lower           = true
+    numeric         = true
+    special         = false
+}
+
 resource "random_password" "password" {
     length          = 16
     special         = true
 }
 
-resource "random_pet" "username" {
-    length          = 2
-}
-
 # variables for database
 locals {
     db_name         = "WordpressDB"
-    db_username     = random_pet.username.id
+    db_username     = random_string.username.result
     db_password     = random_password.password.result
     db_host         = aws_db_instance.mysql-db.address
 }
