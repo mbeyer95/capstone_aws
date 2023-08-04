@@ -21,7 +21,8 @@ resource "aws_instance" "bastion-host"{
         Name = "Bastion"
         }
     user_data = file("userdata.sh")
-    
+
+# create metadata
     provisioner "local-exec"{
         command = "echo Instance Type=${self.instance_type},Instance ID=${self.id},Public DNS=${self.public_dns},AMI ID=${self.ami} >> allinstancedetails"
     }
