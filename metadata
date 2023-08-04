@@ -1,6 +1,0 @@
-VPC ID=vpc-09a24ace43b3a8392
-Internet Gateway = igw-06135b49f6a532dee
-Private Subnet 2 = subnet-0e439395728409070
-Private Subnet 1 = subnet-0e5905ed6376b26b3
-Public Subnet 2 = subnet-09577cb883c4d2a30
-Public Subnet 1 = subnet-02a4b5bba8b1cf76d
