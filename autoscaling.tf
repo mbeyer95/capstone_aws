@@ -3,7 +3,7 @@ resource "aws_launch_template" "launchtemplate" {
     image_id                    = data.aws_ami.latest_linux_ami.id
     instance_type               = var.instance_type
     vpc_security_group_ids      = [aws_security_group.autoscaling-sg.id]
-    user_data                   = file("userdata.sh")
+    user_data                   = base64encode(file("userdata.sh"))
 }
 
 resource "aws_autoscaling_group" "autoscalinggroup" {
