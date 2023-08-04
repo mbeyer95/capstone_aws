@@ -26,8 +26,8 @@ resource "random_pet" "username" {
 
 # variables for database
 locals {
-    db_name         = "Wordpress-DB"
-    db_username     = random_pet.username
+    db_name         = "WordpressDB"
+    db_username     = random_pet.username.id
     db_password     = random_password.password.result
     db_host         = aws_db_instance.mysql-db.address
 }
