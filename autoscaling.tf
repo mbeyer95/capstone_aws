@@ -1,3 +1,7 @@
+locals {
+  public_subnets = [aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id]
+}
+
 resource "aws_launch_template" "launchtemplate" {
     name                        = "wordpress-launchtemplate"
     image_id                    = data.aws_ami.latest_linux_ami.id
@@ -11,7 +15,7 @@ resource "aws_autoscaling_group" "autoscalinggroup" {
     max_size                    = 4
     min_size                    = 2
     desired_capacity            = 2
-    vpc_zone_identifier         = [var.vpc_zone_public]
+    vpc_zone_identifier         = local.public_subnets
     target_group_arns           = [aws_lb_target_group.targetgroup.arn]
     health_check_type           = "ELB"
     health_check_grace_period   = 300
@@ -20,14 +24,3 @@ resource "aws_autoscaling_group" "autoscalinggroup" {
         version                 = "$Latest"
     }
 }
-
-/**
-resource "aws_autoscaling_policy" "autoscalingpolicy" {
-    name                        = "Policy"
-    policy_type                 = "TargetTrackingScaling"
-
-
-
-}
-
-**/
