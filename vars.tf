@@ -14,16 +14,20 @@ locals {
     public_subnets  = [aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id]
 }
 
-# generating password and variables for database
-
+# generating username and password for database
 resource "random_password" "password" {
     length          = 16
     special         = true
 }
 
+resource "random_pet" "username" {
+    length          = 2
+}
+
+# variables for database
 locals {
     db_name         = "Wordpress-DB"
-    db_username     = "Maxey"
+    db_username     = random_pet.username
     db_password     = random_password.password.result
     db_host         = aws_db_instance.mysql-db.address
 }
