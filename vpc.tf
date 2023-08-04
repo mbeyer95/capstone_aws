@@ -7,7 +7,7 @@ resource "aws_vpc" "vpc"{
         Name = "vpc"
     }
     provisioner "local-exec"{
-    command = "echo VPC ID=${self.id} >> metadata"
+    command = "echo VPC = ${self.id} >> metadata"
   }
 }
 
@@ -27,7 +27,7 @@ resource "aws_subnet" "publicsubnet1"{
         Name = "publicsubnet1"
     }
     provisioner "local-exec"{
-    command = "echo Public Subnet 1 = ${self.id} >> metadata"
+    command = "echo PublicSubnet1 = ${self.id} >> metadata"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_subnet" "privatesubnet1"{
             Name = "privatesubnet1"
     }
     provisioner "local-exec"{
-    command = "echo Private Subnet 1 = ${self.id} >> metadata"
+    command = "echo PrivateSubnet1 = ${self.id} >> metadata"
   }
 }
 
@@ -57,7 +57,7 @@ resource "aws_subnet" "publicsubnet2"{
         Name = "publicsubnet2"
     }
     provisioner "local-exec"{
-    command = "echo Public Subnet 2 = ${self.id} >> metadata"
+    command = "echo PublicSubnet2 = ${self.id} >> metadata"
   }
 }
 
@@ -72,7 +72,7 @@ resource "aws_subnet" "privatesubnet2"{
             Name = "privatesubnet2"
     }
     provisioner "local-exec"{
-    command = "echo Private Subnet 2 = ${self.id} >> metadata"
+    command = "echo PrivateSubnet2 = ${self.id} >> metadata"
   }
 }
 
@@ -83,7 +83,7 @@ resource "aws_internet_gateway" "IGW"{
         Name = "vpc_igw"
     }
     provisioner "local-exec"{
-    command = "echo Internet Gateway = ${self.id} >> metadata"
+    command = "echo InternetGateway = ${self.id} >> metadata"
   }
 }
 
