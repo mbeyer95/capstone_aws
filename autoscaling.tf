@@ -7,7 +7,7 @@ resource "aws_launch_template" "launchtemplate" {
 }
 
 resource "aws_autoscaling_group" "autoscalinggroup" {
-    name                        = "autoscaling-group"
+    name                        = "wordpress-autoscalinggroup"
     max_size                    = 4
     min_size                    = 2
     desired_capacity            = 2

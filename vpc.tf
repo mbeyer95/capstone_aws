@@ -1,3 +1,7 @@
+# Query all available Availability Zone; we will use specific availability zone using index - The Availability Zones data source
+# provides access to the list of AWS availabililty zones which can be accessed by an AWS account specific to region configured in the provider.
+data "aws_availability_zones" "vpc_azs"{}
+
 #Create a Virtual private cloud with CIDR 10.0.0.0/16 in the region us-west-2
 resource "aws_vpc" "vpc"{
     cidr_block = "10.0.0.0/16"
@@ -10,11 +14,6 @@ resource "aws_vpc" "vpc"{
     command = "echo VPC = ${self.id} >> metadata"
   }
 }
-
-# Query all available Availability Zone; we will use specific availability zone using index - The Availability Zones data source
-# provides access to the list of AWS availabililty zones which can be accessed by an AWS account specific to region configured in the provider.
-
-data "aws_availability_zones" "vpc_azs"{}
 
 # Public Subnet 1
 resource "aws_subnet" "publicsubnet1"{
