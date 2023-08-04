@@ -78,7 +78,7 @@ resource "aws_subnet" "privatesubnet2"{
 # Subnet Group for RDS
 resource "aws_db_subnet_group" "privatesubnet-mysql" {
     name = "privatesubnet-mysql"
-    subnet_ids = [var.vpc_zone_public]
+    subnet_ids = local.public_subnets
 
     tags = {
       Name = "Private Subnet MYSQL"
