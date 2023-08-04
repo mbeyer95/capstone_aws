@@ -1,5 +1,4 @@
 # Select newest AMI-id
-
 data "aws_ami" "latest_linux_ami" {
     most_recent             = true
     owners                  = ["amazon"]
@@ -22,12 +21,12 @@ resource "aws_instance" "bastion-host"{
     vpc_security_group_ids  = [aws_security_group.bastion-sg.id]
     subnet_id               = aws_subnet.publicsubnet1.id
     tags = {
-        Name = "Bastion"
+        Name                = "Bastion"
         }
-    user_data = file("userdata.sh")
+    user_data               = file("userdata.sh")
 
 # Create Metadata
-    provisioner "local-exec"{
-        command = "echo 'Instance Type = ${self.instance_type}\nInstance ID = ${self.id}\nPublic DNS = ${self.public_dns}\nAMI ID = ${self.ami}\n' >> allinstancedetails"
+provisioner "local-exec"{
+    command                 = "echo 'Instance Type = ${self.instance_type}\nInstance ID = ${self.id}\nPublic DNS = ${self.public_dns}\nAMI ID = ${self.ami}\n' >> allinstancedetails"
     }
 }

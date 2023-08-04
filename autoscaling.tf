@@ -15,6 +15,7 @@ resource "aws_autoscaling_group" "autoscalinggroup" {
     target_group_arns           = [aws_lb_target_group.targetgroup.arn]
     health_check_type           = "ELB"
     health_check_grace_period   = 300
+    
     launch_template {
         id                      = aws_launch_template.launchtemplate.id
         version                 = "$Latest"
