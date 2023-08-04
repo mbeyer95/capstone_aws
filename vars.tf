@@ -11,5 +11,5 @@ variable "instance_type" {
 }
 
 variable "vpc_zone_public" {
-    default = "aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id"
+    default = "aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id"
 }
