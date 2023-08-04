@@ -18,5 +18,5 @@ DB User: ${local.db_username}
 DB Pass: ${local.db_password}
 DB Host: ${local.db_host}
 EOF
-  filename = "Datenbank-Infos.txt"
+    filename = "database-infos.txt"
 }
