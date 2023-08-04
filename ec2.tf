@@ -12,7 +12,7 @@ data "aws_ami" "latest_linux_ami" {
 
 # Create EC2
 resource "aws_instance" "bastion-host"{
-    ami                     = "ami-08541bb85074a743a"
+    ami                     = data.aws_ami.latest_linux_ami.id
     instance_type           = var.instance_type
     key_name                = "vockey"
     vpc_security_group_ids  = [aws_security_group.bastion-sg.id]
