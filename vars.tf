@@ -11,5 +11,11 @@ variable "instance_type" {
 }
 
 locals {
-  public_subnets    = [aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id]
+    public_subnets  = [aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id]
+}
+
+locals {
+    db_name         = "Wordpress-DB"
+    db_username     = "Maxey"
+    db_password     = "password1234"
 }
