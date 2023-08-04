@@ -1,7 +1,3 @@
-locals {
-  public_subnets = [aws_subnet.publicsubnet1.id, aws_subnet.publicsubnet2.id]
-}
-
 resource "aws_launch_template" "launchtemplate" {
     name                        = "wordpress-launchtemplate"
     image_id                    = data.aws_ami.latest_linux_ami.id

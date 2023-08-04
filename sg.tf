@@ -2,7 +2,7 @@ resource "aws_security_group" "bastion-sg"{
         vpc_id                      = aws_vpc.vpc.id
         name                        = "bastion-sg"
         tags = {
-            Name = "bastion-sg"
+            Name                    = "bastion-sg"
         }
     }
 
@@ -27,7 +27,7 @@ resource "aws_security_group" "autoscaling-sg"{
         vpc_id                      = aws_vpc.vpc.id
         name                        = "autoscaling-sg"
         tags = {
-            Name = "autoscaling-sg"
+            Name                    = "autoscaling-sg"
         }
     }
 
@@ -84,7 +84,7 @@ resource "aws_security_group" "alb-sg"{
         vpc_id                      = aws_vpc.vpc.id
         name                        = "alb-sg"
         tags = {
-            Name = "alb-sg"
+            Name                    = "alb-sg"
         }
     }
 
@@ -117,7 +117,7 @@ resource "aws_security_group" "mysql-sg"{
         vpc_id                      = aws_vpc.vpc.id
         name                        = "mysql-sg"
         tags = {
-            Name = "mysql-sg"
+            Name                    = "mysql-sg"
         }
     }
 
