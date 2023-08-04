@@ -1,7 +1,7 @@
 #Create a Virtual private cloud with CIDR 10.0.0.0/16 in the region us-west-2
 resource "aws_vpc" "vpc"{
     cidr_block = "10.0.0.0/16"
-    enable_dns_hostnames=true
+    enable_dns_hostnames = true
     enable_dns_support = true
     tags = {
         Name = "vpc"
@@ -24,7 +24,7 @@ resource "aws_subnet" "publicsubnet1"{
     availability_zone = data.aws_availability_zones.vpc_azs.names[1]
 
     tags = {
-        Name = "capstone_public1"
+        Name = "publicsubnet1"
     }
     provisioner "local-exec"{
     command = "echo Public Subnet 1 = ${self.id} >> metadata"
@@ -39,7 +39,7 @@ resource "aws_subnet" "privatesubnet1"{
     availability_zone = data.aws_availability_zones.vpc_azs.names[1]
     
     tags = {
-            Name = "capstone_private1"
+            Name = "privatesubnet1"
     }
     provisioner "local-exec"{
     command = "echo Private Subnet 1 = ${self.id} >> metadata"
@@ -54,7 +54,7 @@ resource "aws_subnet" "publicsubnet2"{
     availability_zone = data.aws_availability_zones.vpc_azs.names[2]
 
     tags = {
-        Name = "capstone_public2"
+        Name = "publicsubnet2"
     }
     provisioner "local-exec"{
     command = "echo Public Subnet 2 = ${self.id} >> metadata"
@@ -69,7 +69,7 @@ resource "aws_subnet" "privatesubnet2"{
     availability_zone = data.aws_availability_zones.vpc_azs.names[2]
     
     tags = {
-            Name = "capstone_private2"
+            Name = "privatesubnet2"
     }
     provisioner "local-exec"{
     command = "echo Private Subnet 2 = ${self.id} >> metadata"
@@ -93,7 +93,7 @@ resource "aws_internet_gateway" "IGW"{
 resource "aws_route_table" "publicRouteTable1"{
     vpc_id = aws_vpc.vpc.id
     route{
-        cidr_block = "0.0.0.0/0"
+        cidr_block = var.cidr_block
         gateway_id = aws_internet_gateway.IGW.id
     }
     tags = {
@@ -145,7 +145,7 @@ resource "aws_route_table" "privateRouteTable1" {
 
 
 #  route {
-#    cidr_block = "0.0.0.0/0"
+#    cidr_block = var.cidr_block
 #    gateway_id = "${aws_nat_gateway.NatGateway.id}"
 #  }
 
