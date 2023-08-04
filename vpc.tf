@@ -75,6 +75,16 @@ resource "aws_subnet" "privatesubnet2"{
   }
 }
 
+# Subnet Group for RDS
+resource "aws_db_subnet_group" "privatesubnet-mysql" {
+    name = "privatesubnet-mysql"
+    subnet_ids = [var.vpc_zone_public]
+
+    tags = {
+      Name = "Private Subnet MYSQL"
+    }
+}
+
 # Internet Gateway - to have Internet traffic in public subnets
 resource "aws_internet_gateway" "IGW"{
     vpc_id = aws_vpc.vpc.id
@@ -114,47 +124,46 @@ resource "aws_route_table_association" "publicSubnetAssociation2" {
     depends_on = [aws_route_table.publicRouteTable1, aws_subnet.publicsubnet2]
 }
 
+/**
 # Adding NAT Gatway
 # Create Elastic IP. The advantage of associating the Elastic IP address with the network interface instead of directly with the instance is that you can move all the attributes of the network interface from one instance to another in a single step.
 
-#resource "aws_eip" "ip" {
-#    domain = "vpc"
-##   vpc = true
-#    tags = {
-#    Name = "elastic_ip"
-#  }
-#}
+resource "aws_eip" "ip" {
+    domain = "vpc"
+    tags = {
+    Name = "elastic_ip"
+  }
+}
 
 # NAT Gateway in public subnet and assigned the above created Elastic IP to it .
-
-#resource "aws_nat_gateway" "NatGateway" {
-#  allocation_id = "${aws_eip.ip.id}"
-#  subnet_id     = "${aws_subnet.publicsubnet1.id}"
-#
-#
-#  tags = {
-#    Name = "NatGateway"
-#  }
-#}
+resource "aws_nat_gateway" "NatGateway" {
+    allocation_id = "${aws_eip.ip.id}"
+    subnet_id     = "${aws_subnet.publicsubnet1.id}"
+    
+    tags = {
+      Name = "NatGateway"
+    }
+}
+**/
 
 #Create a Route Table in order to connect our private subnet to the NAT Gateway .
-
 resource "aws_route_table" "privateRouteTable1" {
   vpc_id = "${aws_vpc.vpc.id}"
+}
 
-
-#  route {
-#    cidr_block = var.cidr_block
-#    gateway_id = "${aws_nat_gateway.NatGateway.id}"
-#  }
+/**
+route {
+    cidr_block = var.cidr_block
+    gateway_id = "${aws_nat_gateway.NatGateway.id}"
+  }
 
   tags = {
     Name = "privateRoute1"
   }
 }
+**/
 
-# Associate this route table to private subnet 
-
+# Associate this route table to private subnet
  resource "aws_route_table_association" "private_association1" {
     route_table_id = aws_route_table.privateRouteTable1.id
     subnet_id = aws_subnet.privatesubnet1.id
