@@ -10,3 +10,13 @@ resource "aws_db_instance" "mysql-db" {
     db_subnet_group_name    = aws_db_subnet_group.privatesubnet-mysql.name
     vpc_security_group_ids  = [aws_security_group.mysql-sg.id]
 }
+
+resource "local_file" "db_info" {
+    content = <<EOF
+DB Name: ${local.db_name}
+DB User: ${local.db_username}
+DB Pass: ${local.db_password}
+DB Host: ${local.db_host}
+EOF
+  filename = "Datenbank-Infos.txt"
+}
