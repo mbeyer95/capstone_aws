@@ -28,6 +28,6 @@ resource "aws_instance" "bastion-host"{
 
 # Create Metadata
     provisioner "local-exec"{
-        command = "echo -e 'Instance Type = ${self.instance_type}\nInstance ID = ${self.id}\nPublic DNS = ${self.public_dns}\nAMI ID = ${self.ami}\n' >> allinstancedetails"
+        command = "echo 'Instance Type = ${self.instance_type}\nInstance ID = ${self.id}\nPublic DNS = ${self.public_dns}\nAMI ID = ${self.ami}\n' >> allinstancedetails"
     }
 }
