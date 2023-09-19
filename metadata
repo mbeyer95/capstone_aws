@@ -16,3 +16,6 @@ PrivateSubnet1 = subnet-0827808de05a7aa5e
 PrivateSubnet2 = subnet-0098778fd8fce53e7
 PublicSubnet2 = subnet-0c9a5dafd2dfa4912
 PublicSubnet1 = subnet-020377e7bcb43e6ce
+PrivateSubnet2 = subnet-0094a4b7068e9b52f
+PrivateSubnet1 = subnet-0af306a52f3027406
+InternetGateway = igw-0df57f5f921a2c77f

@@ -13,3 +13,8 @@ Instance ID = i-09fe7212bfc88abaa
 Public DNS = ec2-54-187-179-204.us-west-2.compute.amazonaws.com
 AMI ID = ami-01f8103a2082c0718
 
+Instance Type = t2.micro
+Instance ID = i-0d78109527c199201
+Public DNS = ec2-35-162-185-11.us-west-2.compute.amazonaws.com
+AMI ID = ami-01f8103a2082c0718
+
