@@ -14,9 +14,17 @@ resource "aws_security_group" "bastion-sg"{
         cidr_ipv4                   = var.cidr_block
     }
 
+    resource "aws_vpc_security_group_ingress_rule" "bastion_ingress_http"{
+        from_port                   = 80
+        ip_protocol                 = "tcp"
+        security_group_id           = aws_security_group.bastion-sg.id
+        to_port                     = 80
+        cidr_ipv4                   = var.cidr_block
+    }
+
     resource "aws_vpc_security_group_egress_rule" "bastion_egress"{
         from_port                   = 0
-        ip_protocol                 = "tcp"
+        ip_protocol                 = "-1" # alle Protokolle
         security_group_id           = aws_security_group.bastion-sg.id
         to_port                     = 0
         cidr_ipv4                   = var.cidr_block
