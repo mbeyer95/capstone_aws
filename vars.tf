@@ -3,7 +3,7 @@ variable "cidr_block" {
 }
 
 variable region {
-    default             = "us-west-2"
+    default             = "eu-central-1"
 }
 
 variable "instance_type" {
